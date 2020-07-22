@@ -67,14 +67,14 @@ describe Deliver::UploadScreenshots do
       add_screenshot("/Screenshots/en-GB/iPhone8-01First{750x1334}_framed.jpg")
       screenshots = collect_screenshots_from_dir("/Screenshots/")
       expect(screenshots.count).to eq(2)
-      expect(screenshots.group_by(&:device_type).keys).to include("watchSeries4", "iphone6")
+      expect(screenshots.group_by(&:device_type).keys).to include("APP_WATCH_SERIES_4", "APP_IPHONE_47")
     end
 
     it "should support special appleTV directory" do
       add_screenshot("/Screenshots/appleTV/en-GB/01First{3840x2160}.jpg")
       screenshots = collect_screenshots_from_dir("/Screenshots/")
       expect(screenshots.count).to eq(1)
-      expect(screenshots.first.device_type).to eq("appleTV")
+      expect(screenshots.first.device_type).to eq("APP_APPLE_TV")
     end
 
     it "should detect iMessage screenshots based on the directory they are contained within" do
